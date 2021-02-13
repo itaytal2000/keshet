@@ -1,0 +1,10 @@
+.zoom:hover 
+{
+  transition: transform .2s;
+  transform: scale(1.15);
+}
+
+.bgNextDaysFrcst
+{
+    background: #F2350F;
+}

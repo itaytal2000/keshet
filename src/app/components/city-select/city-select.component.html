@@ -1,0 +1,14 @@
+<!-- Select city -->
+<div class="text-center">
+  <div>
+    <form [formGroup]="citiesForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Select City</mat-label>  
+        <mat-select formControlName="theCity" [(value)]="selected" (selectionChange)="submitForm($event.value)">
+          <mat-option>Select City</mat-option>
+          <mat-option *ngFor="let city of citiesList" [value]="city.cityVal">{{city.cityName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="text-center">
+  <div class="display-4">
+    World Temperature Forecast
+  </div>
+  <app-city-select (cityChanged)="onFormSearch($event)"></app-city-select>
+  <!--Dispaly forecast info (today + 4 next days)-->
+  <div class="row">
+    <div *ngFor="let frcst of allResults; let i = index" class="col-sm-12 col-lg-2">
+      <ng-container [ngTemplateOutlet]="(i==0) ? today : nextDays" [ngTemplateOutletContext]="{data: frcst}"></ng-container>
+    </div>
+  </div>
+</div>
+
+<!-- Template for today -->
+<ng-template #today let-frcst="data">
+  <div class="bg-info rounded text-center border border-dark zoom">
+    <div>
+      {{frcst.dayMonth}} {{frcst.year}}
+    </div>
+    <div>
+      {{city}} 
+    </div>
+    <div>
+      <img [src]="frcst.icon" />
+    </div>
+    <div>
+      {{frcst.description}}
+    </div>
+    <div class="display-4">
+      {{frcst.temprtr}}
+    </div>
+  </div>
+</ng-template>
+
+<!-- Template for next days -->
+<ng-template #nextDays let-frcst="data">
+  <div class="bgNextDaysFrcst rounded text-center border border-dark zoom">
+    <div>
+      <img [src]="frcst.icon" />
+    </div>
+    <div class="display-6">
+      {{frcst.temprtr}}
+    </div>
+    <div>
+      {{frcst.dayMonth}}
+    </div>
+  </div>
+</ng-template>
